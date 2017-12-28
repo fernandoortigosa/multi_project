@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
 
-	compile project(":repository")
+	compile project(":todo-repository")
 
 	providedCompile 'javax.servlet:servlet-api:2.5',
 					'javax.servlet.jsp:jsp-api:2.1'
