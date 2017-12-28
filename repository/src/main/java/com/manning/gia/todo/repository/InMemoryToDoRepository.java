@@ -21,6 +21,11 @@ public class InMemoryToDoRepository implements ToDoRepository {
     }
 
     @Override
+    public int countAll() {
+        return toDos.values().size();
+    }
+
+    @Override
     public List<ToDoItem> findAllActive() {
         List<ToDoItem> activeToDos = new ArrayList<ToDoItem>();
 

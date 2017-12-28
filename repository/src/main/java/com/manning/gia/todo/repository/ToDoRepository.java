@@ -5,6 +5,9 @@ import com.manning.gia.todo.model.ToDoItem;
 import java.util.List;
 
 public interface ToDoRepository {
+
+	int countAll();
+
     List<ToDoItem> findAll();
 
     List<ToDoItem> findAllActive();
