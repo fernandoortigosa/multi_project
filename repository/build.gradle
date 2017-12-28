@@ -8,3 +8,9 @@ dependencies {
 	testCompile "junit:junit:4.11"
 }
 
+test {
+	
+	jvmArgs "-Xms64m", "-Xmx512m", "-ea"
+
+	systemProperty "items", "20"
+}

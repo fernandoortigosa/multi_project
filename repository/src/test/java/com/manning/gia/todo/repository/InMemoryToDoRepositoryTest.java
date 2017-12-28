@@ -18,14 +18,28 @@ public class InMemoryToDoRepositoryTest {
 
     @Test
     public void testInsertToDoItem() {
-        ToDoItem newToDoItem = new ToDoItem();
-        newToDoItem.setName("Write unit tests");
-        Long newId = inMemoryToDoRepository.insert(newToDoItem);
-        assertNotNull(newId);
 
-        ToDoItem persistedToDoItem = inMemoryToDoRepository.findById(newId);
-        assertNotNull(persistedToDoItem);
-        assertEquals(newToDoItem, persistedToDoItem);
+        String sItems = System.getProperty("items");
+        int nItems = Integer.parseInt(sItems == null ? "1" : sItems);
+
+        int sizeBefore = inMemoryToDoRepository.countAll();
+
+        for(int i = 0; i < nItems; i++) {
+            ToDoItem newToDoItem = new ToDoItem();
+            newToDoItem.setName("Write unit tests");
+            Long newId = inMemoryToDoRepository.insert(newToDoItem);
+            assertNotNull(newId);
+
+            ToDoItem persistedToDoItem = inMemoryToDoRepository.findById(newId);
+            assertNotNull(persistedToDoItem);
+            assertEquals(newToDoItem, persistedToDoItem);
+        }
+
+        int sizeAfter = inMemoryToDoRepository.countAll();
+
+        assertEquals(sizeBefore + nItems, sizeAfter);
+
+
     }
 
     @Test
@@ -43,6 +57,7 @@ public class InMemoryToDoRepositoryTest {
         assertEquals(sizeBefore + 1, sizeAfter);
 
     }
-}
 
+
+}
 
